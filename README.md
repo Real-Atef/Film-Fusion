@@ -8,8 +8,6 @@ Welcome to Film Fusion - your ultimate destination for all things cinema! Film F
    
 2. **Personalized Recommendations:** Our recommendation system employs advanced algorithms to suggest movies tailored to your tastes. Users can rate the movies they've watched, and based on these ratings, our system recommends similar films they might enjoy.
    
-3. **Parent's Guide:** We recognize the significance of family-friendly entertainment. Our parent's guide furnishes comprehensive details on a movie's suitability for children, encompassing age-appropriate ratings, themes, and content advisories.
-
 ### Getting Started
 To access Film Fusion, simply navigate to our website at [www.filmfusion.com](www.filmfusion.com). Users can create a free account to unlock additional features such as saving favorite movies, receiving personalized recommendations, and contributing their own reviews.
 
