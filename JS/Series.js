@@ -1,14 +1,5 @@
-
-var apikey = "8913688ba8c6297c6666f612a9c5409f";
-
-
-var posters = new Array(16);
-var names = new Array(16);
-
-for (var i = 0; i < 16; i++) {
-  posters[i] = document.getElementById(`seriesposter${i}`);
-  names[i] = document.getElementById(`seriesname${i}`);
-}
+//API Key for the movie database
+var apikey = "37af78034f737ae890e4ffcb2e0dd466";
 
 var data;
 function getdata() {
@@ -21,9 +12,18 @@ function getdata() {
   myhttp.addEventListener("load", function () {
     if (myhttp.readyState == 4 && myhttp.status == 200) {
       data = JSON.parse(myhttp.response);
-      for (var i = 0; i < 16; i++) {
-        posters[i].src = `https://image.tmdb.org/t/p/w500/${data.results[i].poster_path}`;
-        names[i].innerHTML = data.results[i].name;
+      var section = document.querySelector(`.row`);
+      for (var i = 0; i < data.results.length; i++) {
+        const card = document.createElement("div");
+        card.classList.add("col-1", "card");
+        card.innerHTML = `
+        <img src="https://image.tmdb.org/t/p/w500/${data.results[i].poster_path}">
+        <div class="overlay">
+          <div class="text">${data.results[i].title}</div>
+        </div>
+      `;
+        console.log(data.results[i].poster_path);
+        section.appendChild(card);
       }
     }
   });
