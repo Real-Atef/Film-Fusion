@@ -30,18 +30,18 @@ a {
 }
 
 .profile-icon {
-  margin-left: auto; 
+  margin-left: auto;
 }
 
 h2 {
-    padding-top: 10%;
-    color: #ffffff;
-    margin-left: 10%;
-    font-size: 40px;
+  padding-top: 10%;
+  color: #ffffff;
+  margin-left: 10%;
+  font-size: 40px;
 }
 h3 {
   padding-top: 5px;
-  color: rgb(92,131,116);
+  color: rgb(92, 131, 116);
   margin-left: 5%;
   font-size: 50px;
   margin-top: 20px;
@@ -50,34 +50,33 @@ h4 {
   padding-top: 10%;
   color: #ffffff;
   font-size: 40px;
-
 }
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 h1 {
-    padding-top: 10px;
-    color: rgb(92,131,116);
-    margin-left: 10%;
-    font-size: 60px;
-    margin-top: 170px;
+  padding-top: 10px;
+  color: rgb(92, 131, 116);
+  margin-left: 10%;
+  font-size: 60px;
+  margin-top: 130px;
 }
 body {
   margin: 0;
   padding: 0;
   font-family: "Italiana", sans-serif;
   background-color: #040d12;
-} 
+}
 main {
   margin: auto;
 }
 .item-container {
   display: flex;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -86,7 +85,7 @@ main {
   margin-right: 70px;
   margin-left: 70px;
 }
-p{
+p {
   color: #ffffff;
   margin-right: 5%;
   font-family: "Italiana", sans-serif;
@@ -95,26 +94,26 @@ p{
 }
 .button {
   display: inline-block;
-  padding: 15px 30px; 
+  padding: 15px 30px;
   margin: 10px;
-  background-color: transparent; 
-  color: #ffffff; 
-  border: 2px solid  rgb(92,131,116); 
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid rgb(92, 131, 116);
   border-radius: 8px;
   cursor: pointer;
   text-decoration: none;
-  font-size: 18px; 
+  font-size: 18px;
   font-family: "Italiana", sans-serif;
 }
 .button-container {
   text-align: left;
-  margin-right: 20px; 
+  margin-right: 20px;
   margin-left: 70px;
   margin-top: 40px;
 }
 .button:hover {
-  background-color: rgb(92,131,116); 
-  color: #fff; 
+  background-color: rgb(92, 131, 116);
+  color: #fff;
 }
 
 div {
@@ -128,7 +127,7 @@ div {
   margin-right: 30px;
   margin-bottom: 20px;
   text-align: center;
-  font-family: "Italiana", sans-serif ;
+  font-family: "Italiana", sans-serif;
 }
 .team {
   width: 160px;
@@ -141,11 +140,16 @@ div {
   height: 100%;
   object-fit: cover;
 }
-.TopCast{
-  
+.TopCast {
   padding: 50px 75px;
 }
-.Type p{
+.Type p {
   font-size: x-large;
   margin-left: 6%;
+}
+footer {
+  background-color: #06131a;
+  color: white;
+  text-align: center;
+  padding: 10px;
 }

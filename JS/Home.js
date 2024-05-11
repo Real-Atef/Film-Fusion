@@ -50,7 +50,7 @@ fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`)
   });
 
 // Function to fetch data
-function fetchData(url, sectionId, cardClass, sliceStart, sliceEnd) {
+function fetchData(url, sectionId, cardClass, sliceStart, sliceEnd, mediaType) {
   fetch(url + apiKey)
     .then((response) => {
       if (!response.ok) {
@@ -65,8 +65,7 @@ function fetchData(url, sectionId, cardClass, sliceStart, sliceEnd) {
       items.forEach((item) => {
         // Create anchor tag to link to description page
         const anchor = document.createElement("a");
-        anchor.href = `/Pages/description.html?id=${item.id}`; // Assuming you have a description.html file
-        anchor.classList.add("card-link"); // Add a class for styling if needed
+        anchor.href = `/Pages/description.html?id=${item.id}&type=${mediaType}`; // Pass media type in the query parameter
 
         // Create card container
         const card = document.createElement("div");
@@ -101,27 +100,31 @@ window.addEventListener("load", () => {
     "recommendations",
     "popular-movie-card",
     8,
-    15
+    15,
+    "movie" // Pass media type "movie"
   );
   fetchData(
     "https://api.themoviedb.org/3/discover/movie?api_key=",
     "movies",
     "movie-card",
     0,
-    7
+    7,
+    "movie" // Pass media type "movie"
   );
   fetchData(
     "https://api.themoviedb.org/3/discover/tv?api_key=",
     "series",
     "series-card",
     0,
-    7
+    7,
+    "tv" // Pass media type "series"
   );
   fetchData(
     "https://api.themoviedb.org/3/movie/upcoming?api_key=",
     "upcoming",
     "upcoming-movie-card",
     0,
-    7
+    7,
+    "movie" // Pass media type "movie"
   );
 });

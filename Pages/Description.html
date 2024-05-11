@@ -1,78 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Film Fusion - Series</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Film Fusion - Description</title>
     <link rel="stylesheet" href="/CSS/Description.css" />
     <link rel="icon" href="/Images/Logo2.png" type="image/x-icon" />
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-          <div class="logo">
-            <a href="/home.html">
-                <img src="/Images/Logo.png" alt="Film Fusion Logo" width="170" height="80"/>
-            </a>
-          </div>
-          <ul class="nav-links">
-            <li></li>
-            <li><a href="movies.html">Movies</a></li>
-            <li><a href="series.html">Series</a></li>
-            <li><a href="About-us.html">About Us</a></li>
-          </ul>
-           <a href="/Pages/Sign-up.html">
+      <nav>
+        <div class="logo">
+          <a href="/home.html">
             <img
-              src="/Images/PersonCircle-removebg-preview.png"
-              alt="Profile Icon"
+              src="/Images/Logo.png"
+              alt="Film Fusion Logo"
+              width="170"
+              height="80"
             />
-            </a>
-        </nav>
-      </header>
-      <main>
-        <h1>Ant Man</h1>
-        <li class="item-container">
-          <img src="/Images/Movies/ant_man.jpg" alt="Ant man poster" width="400" height="600">
-          <iframe width="1100" height="600" src="https://www.youtube-nocookie.com/embed/pWdKf3MneyI?si=6BGKBJjBoXIEbbJE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </li>
-        <div class="button-container">
-          <button class="button">Action</button>
-          <button class="button">Comedy</button>
-          <button class="button">Sci-Fi</button>
+          </a>
         </div>
-        <p>Armed with a super-suit with the astonishing ability to shrink in scale but increase in strength, cat burglar Scott Lang must embrace his inner hero and help his mentor, Dr. Hank Pym, pull off a plan that will save the world. Follow the extraordinary journey of Scott Lang, a skilled thief turned reluctant hero...</p>
-        <section class="Type">
+        <ul class="nav-links">
+          <li></li>
+          <li><a href="movies.html">Movies</a></li>
+          <li><a href="series.html">Series</a></li>
+          <li><a href="About-us.html">About Us</a></li>
+        </ul>
+        <a href="/Pages/Sign-up.html">
+          <img
+            src="/Images/PersonCircle-removebg-preview.png"
+            alt="Profile Icon"
+          />
+        </a>
+      </nav>
+    </header>
+    <main id="description">
+      <h1 id="movie-title"></h1>
+      <div class="item-container">
+        <img
+          id="movie-poster"
+          src=""
+          alt="Movie Poster"
+          width="400"
+          height="600"
+        />
+        <iframe
+          id="movie-trailer"
+          width="1100"
+          height="600"
+          src=""
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="button-container" id="genre-buttons">
+        <!-- Genre buttons will be dynamically generated here -->
+      </div>
+
+      <p id="movie-synopsis"></p>
+      <section class="Type">
         <h3>Director</h3>
-        <p>Payton Reed</p>
-        </section>
-        <h3>Top Cast</h3>
-        <section class="TopCast"> <div class="serv">
-          <div class="team">
-            <img src="/Images/Movies/Paul Rudd.jpg" alt="Paul Rudd" />
-          </div>
-          <h4>Paul Rudd</h4>
-        
-          
-        </div>
-        <div class="serv">
-          <div class="team">
-            <img src="/Images/Movies/MV5BZmRhZWVjZWMtMzUwZi00OTI3LThiMzAtY2VmMjU5YjQ0YjVjXkEyXkFqcGdeQXVyODMzMTM1MDc@._V1_.jpg" alt="Hayley Atwell" />
-          </div>
-          <h4> Hayley Atwell </h4>
-         
-          
-        </div>
-        <div class="serv">
-          <div class="team">
-            <img src="/Images/Movies/220px-DIG13890-052_(cropped).jpg" alt="parveen" />
-          </div>
-          <h4>Anthony Mackie</h4>
-          </section>
-        <section class="Type">
-        <h3>Release Date</h3>
-        <p>July 17, 2015</p>
-        <h3>IMDb Rating</h3>
-        <p>7.3/10</p>
+        <p id="movie-director"></p>
       </section>
-      </main>
-</body>
+      <h3>Top Cast</h3>
+      <section class="TopCast">
+        <div class="serv">
+          <div class="team">
+            <img id="actor1-image" src="" alt="Actor 1" />
+          </div>
+          <h4 id="actor1-name"></h4>
+        </div>
+        <div class="serv">
+          <div class="team">
+            <img id="actor2-image" src="" alt="Actor 2" />
+          </div>
+          <h4 id="actor2-name"></h4>
+        </div>
+        <div class="serv">
+          <div class="team">
+            <img id="actor3-image" src="" alt="Actor 3" />
+          </div>
+          <h4 id="actor3-name"></h4>
+        </div>
+      </section>
+      <section class="Type">
+        <h3>Release Date</h3>
+        <p id="movie-release-date"></p>
+        <h3>IMDb Rating</h3>
+        <p id="movie-rating"></p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 Film Fusion. All rights reserved.</p>
+    </footer>
+    <script src="/JS/Description.js"></script>
+  </body>
+</html>
