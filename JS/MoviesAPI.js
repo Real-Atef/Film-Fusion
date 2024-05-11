@@ -15,6 +15,7 @@ function getdata() {
         const card = document.createElement("div");
         card.classList.add("col-1", "card");
         card.innerHTML = `
+        <a href="Description.html">
         <img src="https://image.tmdb.org/t/p/w500/${data.results[i].poster_path}">
         <div class="overlay">
           <div class="text">${data.results[i].title}</div>
