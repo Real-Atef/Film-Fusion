@@ -9,7 +9,7 @@ Welcome to Film Fusion - your ultimate destination for all things cinema! Film F
 2. **Personalized Recommendations:** Our recommendation system employs advanced algorithms to suggest movies tailored to your tastes. Users can rate the movies they've watched, and based on these ratings, our system recommends similar films they might enjoy.
    
 ### Getting Started
-To access Film Fusion, simply navigate to our website at [www.filmfusion.com](www.filmfusion.com). Users can create a free account to unlock additional features such as saving favorite movies, receiving personalized recommendations, and contributing their own reviews.
+To access Film Fusion, simply navigate to our website at [www.filmfusion.com]([www.filmfusion.com](https://film-fusion-ecu.netlify.app/)). Users can create a free account to unlock additional features such as saving favorite movies, receiving personalized recommendations, and contributing their own reviews.
 
 ### Contributing
 We extend a warm invitation to all movie enthusiasts to contribute! Whether you wish to share your perspectives on a specific film, enhance our parent's guide, or suggest improvements to our platform, please don't hesitate to contact our team via email at [contact@filmfusion.com](mailto:contact@filmfusion.com).
