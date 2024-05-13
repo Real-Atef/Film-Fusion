@@ -26,6 +26,11 @@ fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`)
     const slideshowContainer = document.getElementById("Slideshow");
 
     popularMovies.forEach((movie) => {
+      // Skip movies without backdrop path
+      if (movie.backdrop_path === null) {
+        return;
+      }
+
       // Create slide element
       const slide = document.createElement("div");
       slide.classList.add("mySlides", "fade");
