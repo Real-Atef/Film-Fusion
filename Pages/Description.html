@@ -1,100 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Film Fusion - Description</title>
-    <link rel="stylesheet" href="/CSS/Description.css" />
-    <link rel="icon" href="/Images/Logo2.png" type="image/x-icon" />
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="logo">
-          <a href="/home.html">
-            <img
-              src="/Images/Logo.png"
-              alt="Film Fusion Logo"
-              width="170"
-              height="80"
-            />
-          </a>
-        </div>
-        <ul class="nav-links">
-          <li></li>
-          <li><a href="movies.html">Movies</a></li>
-          <li><a href="series.html">Series</a></li>
-          <li><a href="About-us.html">About Us</a></li>
-        </ul>
-        <a href="/Pages/Sign-up.html">
-          <img
-            src="/Images/PersonCircle-removebg-preview.png"
-            alt="Profile Icon"
-          />
-        </a>
-      </nav>
-    </header>
-    <main id="description">
-      <h1 id="movie-title"></h1>
-      <div class="item-container">
-        <img
-          id="movie-poster"
-          src=""
-          alt="Movie Poster"
-          width="400"
-          height="600"
-        />
-        <iframe
-          id="movie-trailer"
-          width="1100"
-          height="600"
-          src=""
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View movie and TV series details on Film Fusion.">
+  <title>Film Fusion</title>
+  <link rel="icon" href="../Images/Logo2.png">
+  <link rel="stylesheet" href="../CSS/common.css">
+  <link rel="stylesheet" href="../CSS/Description.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="../Home.html"><img src="../Images/Logo_colored.png" alt="Film Fusion"></a>
       </div>
-      <div class="button-container" id="genre-buttons">
-        <!-- Genre buttons will be dynamically generated here -->
+      <button class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="movies.html">Movies</a></li>
+        <li><a href="series.html">Series</a></li>
+        <li><a href="watchlist.html">Watchlist</a></li>
+        <li><a href="About-us.html">About</a></li>
+      </ul>
+      <div class="search-box">
+        <input type="search" id="searchInput" placeholder="Search..." autocomplete="off">
+        <button onclick="search()">Search</button>
       </div>
+      <a href="Sign-in.html" class="profile-btn"><img src="../Images/PersonCircle-removebg-preview.png" alt="Account"></a>
+    </nav>
+  </header>
 
-      <p id="movie-synopsis"></p>
-      <section class="Type">
-        <h3>Director</h3>
-        <p id="movie-director"></p>
-      </section>
-      <h3>Top Cast</h3>
-      <section class="TopCast">
-        <div class="serv">
-          <div class="team">
-            <img id="actor1-image" src="" alt="Actor 1" />
-          </div>
-          <h4 id="actor1-name"></h4>
-        </div>
-        <div class="serv">
-          <div class="team">
-            <img id="actor2-image" src="" alt="Actor 2" />
-          </div>
-          <h4 id="actor2-name"></h4>
-        </div>
-        <div class="serv">
-          <div class="team">
-            <img id="actor3-image" src="" alt="Actor 3" />
-          </div>
-          <h4 id="actor3-name"></h4>
-        </div>
-      </section>
-      <section class="Type">
-        <h3>Release Date</h3>
-        <p id="movie-release-date"></p>
-        <h3>IMDb Rating</h3>
-        <p id="movie-rating"></p>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2024 Film Fusion. All rights reserved.</p>
-    </footer>
-    <script src="/JS/Description.js"></script>
-  </body>
+  <main class="detail-page">
+    <h1 class="detail-title" id="title">Loading...</h1>
+    
+    <div class="detail-hero">
+      <img class="detail-poster" id="poster" src="" alt="Poster">
+      <iframe class="detail-trailer" id="trailer" src="" allowfullscreen></iframe>
+    </div>
+    
+    <div class="detail-actions" id="actions"></div>
+    
+    <!-- Share Buttons -->
+    <div class="share-buttons" id="shareButtons"></div>
+    
+    <p class="detail-synopsis" id="synopsis"></p>
+    
+    <div class="detail-info" id="info"></div>
+    
+    <!-- Where to Watch -->
+    <section class="watch-providers" id="watchProviders" style="display:none;">
+      <h3 class="detail-section-title">Where to Watch</h3>
+      <div class="providers-grid" id="providersGrid"></div>
+    </section>
+    
+    <!-- Box Office -->
+    <section class="box-office" id="boxOffice" style="display:none;">
+      <h3 class="detail-section-title">Box Office</h3>
+      <div class="box-office-grid" id="boxOfficeGrid"></div>
+    </section>
+    
+    <h3 class="detail-section-title">Top Cast</h3>
+    <div class="cast-grid" id="cast"></div>
+    
+    <!-- Videos Gallery -->
+    <section class="videos-section" id="videosSection" style="display:none;">
+      <h3 class="detail-section-title">Videos & Trailers</h3>
+      <div class="videos-row" id="videosRow"></div>
+    </section>
+    
+    <!-- Images Gallery -->
+    <section class="images-section" id="imagesSection" style="display:none;">
+      <h3 class="detail-section-title">Images</h3>
+      <div class="images-row" id="imagesRow"></div>
+    </section>
+    
+    <section class="similar-section" id="similarSection">
+      <h3 class="detail-section-title">You May Also Like</h3>
+      <div class="similar-row" id="similarRow"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Film Fusion. All rights reserved.</p>
+  </footer>
+
+  <script src="../JS/config.js"></script>
+  <script src="../JS/Description.js"></script>
+  <script>
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    function search() {
+      const q = document.getElementById('searchInput').value.trim();
+      if (q) window.location.href = `search-results.html?q=${encodeURIComponent(q)}`;
+    }
+    document.getElementById('searchInput').addEventListener('keypress', e => { if (e.key === 'Enter') search(); });
+  </script>
+</body>
 </html>

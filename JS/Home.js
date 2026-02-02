@@ -1,135 +1,133 @@
-const apiKey = "587c710c3df4f4747c43471c4788cf12";
+/**
+ * Film Fusion - Home Page
+ */
+
 let slideIndex = 0;
+let slideTimer = null;
 
-function showSlides(slides) {
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {
-    slideIndex = 1;
-  }
-  slides[slideIndex - 1].style.display = "block";
-  setTimeout(showSlides, 3000, slides); // Change image every 3 seconds
-}
+// Slideshow
+async function initSlideshow() {
+  const container = document.getElementById("slideshow");
+  if (!container) return;
 
-// Fetch popular movies from API for slideshow
-fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
-  .then((data) => {
-    const popularMovies = data.results;
-    const slideshowContainer = document.getElementById("Slideshow");
+  const data = await fetchApi(apiUrl("/movie/popular"));
+  if (!data?.results) return;
 
-    popularMovies.forEach((movie) => {
-      // Skip movies without backdrop path
-      if (movie.backdrop_path === null) {
-        return;
-      }
-
-      // Create slide element
-      const slide = document.createElement("div");
-      slide.classList.add("mySlides", "fade");
-
-      // Create image element for the slide
-      const image = document.createElement("img");
-      image.src = `https://image.tmdb.org/t/p/w1280/${movie.backdrop_path}`; // Fetch higher resolution image
-      image.style.width = "100%";
-      image.style.height = "auto";
-      slide.appendChild(image);
-
-      // Append slide to slideshow container
-      slideshowContainer.appendChild(slide);
-    });
-
-    // Show the slides once they are loaded
-    const slides = document.querySelectorAll(".mySlides");
-    showSlides(slides);
-  })
-  .catch((error) => {
-    console.error("Error fetching data:", error);
+  data.results.slice(0, 8).forEach((movie, i) => {
+    if (!movie.backdrop_path) return;
+    const slide = document.createElement("div");
+    slide.className = `slide ${i === 0 ? "active" : ""}`;
+    slide.innerHTML = `<img src="${imgUrl(
+      movie.backdrop_path,
+      "w1280"
+    )}" alt="${movie.title}" loading="${
+      i === 0 ? "eager" : "lazy"
+    }" onerror="this.src='${FALLBACK.BACKDROP}'">`;
+    container.appendChild(slide);
   });
 
-// Function to fetch data
-function fetchData(url, sectionId, cardClass, sliceStart, sliceEnd, mediaType) {
-  fetch(url + apiKey)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const items = data.results.slice(sliceStart, sliceEnd); // Limit to a certain number of items
-      const section = document.querySelector(`#${sectionId} .row`);
-
-      items.forEach((item) => {
-        // Create anchor tag to link to description page
-        const anchor = document.createElement("a");
-        anchor.href = `/Pages/description.html?id=${item.id}&type=${mediaType}`; // Pass media type in the query parameter
-
-        // Create card container
-        const card = document.createElement("div");
-        card.classList.add("col-1", "card", cardClass); // Add classes to style with CSS
-
-        // Create card content
-        card.innerHTML = `
-          <img src="https://image.tmdb.org/t/p/w500/${item.poster_path}" alt="${
-          item.title || item.name
-        }" />
-          <div class="overlay">
-            <div class="text">${item.title || item.name}</div>
-          </div>
-        `;
-
-        // Append card content to anchor tag
-        anchor.appendChild(card);
-
-        // Append anchor tag to section
-        section.appendChild(anchor);
-      });
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
+  const slides = container.querySelectorAll(".slide");
+  if (slides.length > 1) {
+    slideTimer = setInterval(() => {
+      slides[slideIndex].classList.remove("active");
+      slideIndex = (slideIndex + 1) % slides.length;
+      slides[slideIndex].classList.add("active");
+    }, 4000);
+  }
 }
 
-// Event listener for loading data
-window.addEventListener("load", () => {
-  fetchData(
-    "https://api.themoviedb.org/3/movie/top_rated?api_key=",
-    "recommendations",
-    "popular-movie-card",
-    8,
-    15,
-    "movie" // Pass media type "movie"
-  );
-  fetchData(
-    "https://api.themoviedb.org/3/discover/movie?api_key=",
-    "movies",
-    "movie-card",
-    0,
-    7,
-    "movie" // Pass media type "movie"
-  );
-  fetchData(
-    "https://api.themoviedb.org/3/discover/tv?api_key=",
-    "series",
-    "series-card",
-    0,
-    7,
-    "tv" // Pass media type "series"
-  );
-  fetchData(
-    "https://api.themoviedb.org/3/movie/upcoming?api_key=",
-    "upcoming",
-    "upcoming-movie-card",
-    0,
-    7,
-    "movie" // Pass media type "movie"
-  );
+// Store fetched data for resize
+const sectionData = {};
+
+// Load section
+async function loadSection(endpoint, sectionId, type) {
+  const grid = document.querySelector(`#${sectionId} .cards-grid`);
+  if (!grid) return;
+
+  if (!sectionData[sectionId]) {
+    showSkeleton(grid, getCardCount("home"));
+    const data = await fetchApi(apiUrl(endpoint));
+    if (!data?.results) {
+      showError(grid);
+      return;
+    }
+    sectionData[sectionId] = { results: data.results, type };
+  }
+
+  renderSection(sectionId);
+}
+
+// Render section with current card count
+function renderSection(sectionId) {
+  const grid = document.querySelector(`#${sectionId} .cards-grid`);
+  if (!grid || !sectionData[sectionId]) return;
+
+  const { results, type } = sectionData[sectionId];
+  const count = getCardCount("home");
+
+  grid.innerHTML = "";
+  results.slice(0, count).forEach((item) => {
+    grid.appendChild(createCard(item, type));
+  });
+}
+
+// Re-render all sections on resize (debounced)
+const handleResize = debounce(() => {
+  if (sectionData["trending"]) renderTrending();
+  Object.keys(sectionData)
+    .filter((k) => k !== "trending")
+    .forEach(renderSection);
+}, 150);
+
+// Load trending (mixed movies and TV)
+async function loadTrending() {
+  const grid = document.querySelector("#trending .cards-grid");
+  if (!grid) return;
+
+  if (!sectionData["trending"]) {
+    showSkeleton(grid, getCardCount("home"));
+    const data = await fetchApi(apiUrl("/trending/all/day"));
+    if (!data?.results) {
+      showError(grid);
+      return;
+    }
+    sectionData["trending"] = {
+      results: data.results.filter((item) => item.media_type !== "person"),
+      type: "mixed",
+    };
+  }
+
+  renderTrending();
+}
+
+function renderTrending() {
+  const grid = document.querySelector("#trending .cards-grid");
+  if (!grid || !sectionData["trending"]) return;
+
+  const { results } = sectionData["trending"];
+  const count = getCardCount("home");
+
+  grid.innerHTML = "";
+  results.slice(0, count).forEach((item) => {
+    grid.appendChild(
+      createCard(item, item.media_type === "tv" ? "tv" : "movie")
+    );
+  });
+}
+
+// Initialize
+document.addEventListener("DOMContentLoaded", () => {
+  initSlideshow();
+  loadTrending();
+  loadSection("/movie/top_rated", "recommendations", "movie");
+  loadSection("/movie/popular", "movies", "movie");
+  loadSection("/tv/popular", "series", "tv");
+  loadSection("/movie/upcoming", "upcoming", "movie");
+});
+
+window.addEventListener("resize", handleResize);
+window.addEventListener("orientationchange", handleResize);
+
+window.addEventListener("beforeunload", () => {
+  if (slideTimer) clearInterval(slideTimer);
 });

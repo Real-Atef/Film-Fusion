@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Film Fusion - Movies</title>
-    <link rel="stylesheet" href="/CSS/Movies-Series.css" />
-    <link rel="icon" href="/Images/Logo2.png" type="image/x-icon" />
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="logo">
-          <a href="/Home.html">
-            <img
-              src="/Images/Logo.png"
-              alt="Film Fusion Logo"
-              width="170"
-              height="80"
-            />
-          </a>
-        </div>
-        <ul class="nav-links">
-          <li></li>
-          <li>
-            <a style="color: rgb(92, 131, 116)" href="movies.html">Movies</a>
-          </li>
-          <li><a href="series.html">Series</a></li>
-          <li><a href="About-us.html">About Us</a></li>
-        </ul>
-        <div class="profile-icon">
-          <a href="Sign-up.html">
-            <img
-              src="/Images/PersonCircle-removebg-preview.png"
-              alt="Profile Icon"
-            />
-          </a>
-        </div>
-      </nav>
-    </header>
-    <main>
-      <h2>Movies</h2>
-      <div class="row"></div>
-    </main>
-    <footer>
-      <p>&copy; 2024 Film Fusion. All rights reserved.</p>
-    </footer>
-    <script src="/JS\MoviesAPI.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse popular movies on Film Fusion. Filter by genre.">
+  <title>Movies - Film Fusion</title>
+  <link rel="icon" href="../Images/Logo2.png">
+  <link rel="stylesheet" href="../CSS/common.css">
+  <link rel="stylesheet" href="../CSS/Movies-Series.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="../Home.html"><img src="../Images/Logo_colored.png" alt="Film Fusion"></a>
+      </div>
+      <button class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="movies.html" class="active">Movies</a></li>
+        <li><a href="series.html">Series</a></li>
+        <li><a href="watchlist.html">Watchlist</a></li>
+        <li><a href="About-us.html">About</a></li>
+      </ul>
+      <div class="search-box">
+        <input type="search" id="searchInput" placeholder="Search..." autocomplete="off">
+        <button onclick="search()">Search</button>
+      </div>
+      <a href="Sign-in.html" class="profile-btn"><img src="../Images/PersonCircle-removebg-preview.png" alt="Account"></a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <h1>Movies</h1>
+      <p>Discover the best films from around the world</p>
+    </div>
+    <div class="filter-bar" id="filterBar"></div>
+    <div class="cards-grid" id="moviesGrid"></div>
+    <div class="pagination" id="pagination"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Film Fusion. All rights reserved.</p>
+  </footer>
+
+  <script src="../JS/config.js"></script>
+  <script src="../JS/MoviesAPI.js"></script>
+  <script>
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    function search() {
+      const q = document.getElementById('searchInput').value.trim();
+      if (q) window.location.href = `search-results.html?q=${encodeURIComponent(q)}`;
+    }
+    document.getElementById('searchInput').addEventListener('keypress', e => { if (e.key === 'Enter') search(); });
+  </script>
+</body>
 </html>

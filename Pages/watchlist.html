@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Your personal watchlist on Film Fusion."
+    />
+    <title>Watchlist - Film Fusion</title>
+    <link rel="icon" href="../Images/Logo2.png" />
+    <link rel="stylesheet" href="../CSS/common.css" />
+    <link rel="stylesheet" href="../CSS/Movies-Series.css" />
+    <link rel="stylesheet" href="../CSS/watchlist.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <a href="../Home.html"
+            ><img src="../Images/Logo_colored.png" alt="Film Fusion"
+          /></a>
+        </div>
+        <button class="menu-toggle" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="movies.html">Movies</a></li>
+          <li><a href="series.html">Series</a></li>
+          <li><a href="watchlist.html" class="active">Watchlist</a></li>
+          <li><a href="About-us.html">About</a></li>
+        </ul>
+        <div class="search-box">
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search..."
+            autocomplete="off"
+          />
+          <button onclick="search()">Search</button>
+        </div>
+        <a href="Sign-in.html" class="profile-btn"
+          ><img src="../Images/PersonCircle-removebg-preview.png" alt="Account"
+        /></a>
+      </nav>
+    </header>
+
+    <main>
+      <h1 class="page-title">My Lists</h1>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab active" data-tab="watchlist">♡ Want to Watch</button>
+        <button class="tab" data-tab="watched">✓ Watched</button>
+        <button class="tab" data-tab="history">🕒 History</button>
+      </div>
+
+      <!-- Want to Watch -->
+      <section class="tab-content active" id="watchlistSection">
+        <div class="section-header">
+          <h2>Want to Watch</h2>
+          <span class="count" id="watchlistCount">0 items</span>
+        </div>
+        <div class="cards-grid" id="watchlistGrid"></div>
+        <div class="empty-state" id="watchlistEmpty">
+          <h3>Your watchlist is empty</h3>
+          <p>Add movies and series by clicking the heart icon</p>
+          <a href="../Home.html" class="btn btn-primary">Browse Content</a>
+        </div>
+      </section>
+
+      <!-- Watched -->
+      <section class="tab-content" id="watchedSection">
+        <div class="section-header">
+          <h2>Watched</h2>
+          <span class="count" id="watchedCount">0 items</span>
+        </div>
+        <div class="cards-grid" id="watchedGrid"></div>
+        <div class="empty-state" id="watchedEmpty">
+          <h3>No watched items yet</h3>
+          <p>Mark movies and series as watched from their detail page</p>
+        </div>
+      </section>
+
+      <!-- History -->
+      <section class="tab-content" id="historySection">
+        <div class="section-header">
+          <h2>Recently Viewed</h2>
+          <button class="btn btn-secondary" id="clearHistoryBtn">
+            Clear History
+          </button>
+        </div>
+        <div class="cards-grid" id="historyGrid"></div>
+        <div class="empty-state" id="historyEmpty">
+          <h3>No viewing history</h3>
+          <p>Movies and series you view will appear here</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Film Fusion. All rights reserved.</p>
+    </footer>
+
+    <script src="../JS/config.js"></script>
+    <script src="../JS/watchlist.js"></script>
+    <script>
+      function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+      }
+      function search() {
+        const q = document.getElementById("searchInput").value.trim();
+        if (q)
+          window.location.href = `search-results.html?q=${encodeURIComponent(
+            q
+          )}`;
+      }
+      document
+        .getElementById("searchInput")
+        .addEventListener("keypress", (e) => {
+          if (e.key === "Enter") search();
+        });
+    </script>
+  </body>
+</html>

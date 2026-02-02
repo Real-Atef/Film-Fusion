@@ -1,55 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Film Fusion - Movies</title>
-    <link rel="stylesheet" href="/CSS/About.css" />
-    <link rel="icon" href="/Images/Logo2.png" type="image/x-icon" />
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="logo">
-          <a href="/Home.html">
-            <img
-              src="/Images/Logo.png"
-              alt="Film Fusion Logo"
-              width="170"
-              height="80"
-            />
-          </a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Film Fusion - Your entertainment discovery platform.">
+  <title>About - Film Fusion</title>
+  <link rel="icon" href="../Images/Logo2.png">
+  <link rel="stylesheet" href="../CSS/common.css">
+  <link rel="stylesheet" href="../CSS/About.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="../Home.html"><img src="../Images/Logo_colored.png" alt="Film Fusion"></a>
+      </div>
+      <button class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="movies.html">Movies</a></li>
+        <li><a href="series.html">Series</a></li>
+        <li><a href="watchlist.html">Watchlist</a></li>
+        <li><a href="About-us.html" class="active">About</a></li>
+      </ul>
+      <div class="search-box">
+        <input type="search" id="searchInput" placeholder="Search..." autocomplete="off">
+        <button onclick="search()">Search</button>
+      </div>
+      <a href="Sign-in.html" class="profile-btn"><img src="../Images/PersonCircle-removebg-preview.png" alt="Account"></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about-hero">
+      <h1>About Film Fusion</h1>
+      <p>Your ultimate destination for discovering movies and TV series</p>
+    </section>
+
+    <section class="about-section">
+      <h2>Our Mission</h2>
+      <p>Film Fusion helps you discover your next favorite movie or TV show with comprehensive information, trailers, and personalized recommendations.</p>
+      
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🎬</div>
+          <h3>Discover</h3>
+          <p>Explore thousands of titles with detailed information</p>
         </div>
-        <ul class="nav-links">
-          <li></li>
-          <li><a href="movies.html">Movies</a></li>
-          <li><a href="series.html">Series</a></li>
-          <li>
-            <a style="color: rgb(92, 131, 116)" href="About-us.html"
-              >About Us</a
-            >
-          </li>
-        </ul>
-        <div class="profile-icon">
-          <a href="Sign-up.html">
-            <img
-              src="/Images/PersonCircle-removebg-preview.png"
-              alt="Profile Icon"
-            />
-          </a>
+        <div class="value-card">
+          <div class="value-icon">💾</div>
+          <h3>Save</h3>
+          <p>Build your personal watchlist for later</p>
         </div>
-      </nav>
-    </header>
-    <main>
-      <h1>About Us</h1>
-      <p>
-        Film Fusion – your go-to hub for all movies and series lovers .<br />
-        This website helps you to choose the suitable movie or series by reading
-        the reviews of other users or parents guide.
-      </p>
-    </main>
-    <footer>
-      <p>&copy; 2024 Film Fusion. All rights reserved.</p>
-    </footer>
-  </body>
+        <div class="value-card">
+          <div class="value-icon">⭐</div>
+          <h3>Rate</h3>
+          <p>See ratings to help you decide what to watch</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div>
+          <div class="stat-number">10K+</div>
+          <div class="stat-label">Movies</div>
+        </div>
+        <div>
+          <div class="stat-number">5K+</div>
+          <div class="stat-label">TV Series</div>
+        </div>
+        <div>
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Free</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <h2>Ready to Start?</h2>
+      <p>Create your free account today</p>
+      <a href="Sign-up.html" class="cta-btn">Get Started</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Film Fusion. All rights reserved.</p>
+  </footer>
+
+  <script src="../JS/config.js"></script>
+  <script>
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    function search() {
+      const q = document.getElementById('searchInput').value.trim();
+      if (q) window.location.href = `search-results.html?q=${encodeURIComponent(q)}`;
+    }
+    document.getElementById('searchInput').addEventListener('keypress', e => { if (e.key === 'Enter') search(); });
+  </script>
+</body>
 </html>

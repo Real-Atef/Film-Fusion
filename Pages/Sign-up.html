@@ -1,169 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Film Fusion - Sign-Up</title>
-    <link rel="stylesheet" href="/CSS/Home.css" />
-    <link rel="icon" href="/Images/Logo2.png" type="image/x-icon" />
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Italiana:wght@400;700&display=swap");
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create a Film Fusion account.">
+  <title>Sign Up - Film Fusion</title>
+  <link rel="icon" href="../Images/Logo2.png">
+  <link rel="stylesheet" href="../CSS/common.css">
+  <link rel="stylesheet" href="../CSS/Sign-up.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="../Home.html"><img src="../Images/Logo_colored.png" alt="Film Fusion"></a>
+      </div>
+      <button class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="movies.html">Movies</a></li>
+        <li><a href="series.html">Series</a></li>
+        <li><a href="watchlist.html">Watchlist</a></li>
+        <li><a href="About-us.html">About</a></li>
+      </ul>
+      <a href="Sign-in.html" class="profile-btn"><img src="../Images/PersonCircle-removebg-preview.png" alt="Account"></a>
+    </nav>
+  </header>
 
-        .div1 {
-            background-color: #06131a;
-            width: 50%;
-            padding-top: 150px;
-            padding-left: 160px;
-            float: left;
-        }
-        
-        .div2 {
-            background-color: #06131a;
-            width: 50%;
-            float: right;
-            display: flex;
-            justify-content: center;
-            height: 50vh;
-            flex-direction: column;
-        }
-        h1{
-            color: white;
-            font-size: 35px;
-            align-self: center;
-            padding-top: 30%;
-        }
-        label{
-            color: white;
-            font-size: 35px;
-            padding-left: 25%;
-
-            
-        }
-        input{
-            color: white;
-            font-size: 35px;
-            width: 50%;
-            align-self: center;
-        }
-        button {
-            background-color: #5C8374;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            width: 50%;
-            font-size: 30px;
-            border-radius: 17px;
-            font-family:Italiana;
-            align-self: center;
-
-        }
-
-        #btn2 {
-            background-color: #06131a;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            width: 50%;
-            font-size: 28px;
-            border-radius: 17px;
-        }
-
-        button:hover {
-            background-color: #45a049;
-            
-        }
-        .container2 {
-            display: flex;
-            justify-content:space-between;
-            
-        }
-
-        .text1{
-            float: left;
-            width: 50%;
-            padding-left: 25%;
-            
-        }
-        .text2{
-            float: right;
-            width: 50%;
-            
-        }
-        footer {
-  background-color: #06131a;
-  color: white;
-  text-align: center;
-  bottom: 0;
-  position: fixed;
-  width: 100%;
-  padding: 10px;
-}
-footer p {
-  padding-top: 0px;
-  color: #ffffff;
-  margin-left: 0%;
-  font-size: 16px;
-}
-
-    </style>
-  </head>
-  <body style="background-color: #06131a; ;">
-    <header>
-      <nav>
-        <div class="logo">
-          <a href="/home.html">
-            <img src="/Images/Logo.png" alt="Film Fusion Logo" width="170" height="80"/>
-          </a>
+  <main class="auth-page">
+    <form class="auth-card" id="signupForm" novalidate>
+      <h1>Create Account</h1>
+      <p class="subtitle">Join Film Fusion today</p>
+      
+      <div class="success-msg" id="successMsg"></div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="John" required>
+          <span class="form-error" id="firstNameError"></span>
         </div>
-        <ul class="nav-links">
-          <li></li>
-          <li><a href="movies.html">Movies</a></li>
-          <li><a href="series.html">Series</a></li>
-          <li><a href="About-us.html">About Us</a></li>
-        </ul>
-        <div class="profile-icon">
-            <a href="Sign-up.html"><img src="/Images/PersonCircle-colored.png" /></a>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+          <span class="form-error" id="lastNameError"></span>
         </div>
-      </nav>
-    </header>
-    <main>
-        <div class="container">
-            <div class="div1">
-                <img src="/Images/image.png" />
-            </div>
-            <div class="div2">
-                <h1>Sign Up</h1>
-                <div class="container2">
-                    <div class="text1">
-                        <label for="Text" style="color: white; padding-left:0%;">First Name</label><br>
-                        <input style="width: 90%;"  type="Text" name="Text"id="Text"> <br>
-                    </div>
-                    <div class="text2">
-                        <label for="Text" style="color: white; padding-left: 0%;">Second Name</label><br>
-                        <input style="width: 50%;"  type="Text" name="Text"id="Text2"> <br><br>
-                    </div>
-                  </div>
-                <label for="Email" style="color: white;">Email</label><br>
-                <input type="email" name="email"id="email"> <br>
-                <label for="password" style="color: white;">Password</label><br>
-                <input type="password" name="password" id="password"><br>
-                <label for="password" style="color: white;">Confirm Password</label><br>
-                <input type="password" name="password" id="password"><br><br><br><br>
-                <button type="submit">Sign Up</button>
-                <p style="align-self: center; font-size: 28px; color: white; ">Already Have An Account? </><a href="Sign-in.html" style="color: #5C8374; font-size: 28px; align-self:center;">Sign In</p></a>
-            </div>
-          </div>
-    </main>
-    <footer>
-      <p>&copy; 2024 Film Fusion. All rights reserved.</p>
-    </footer>
-    <script src="/JS/Home.js"></script>
-  </body>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        <span class="form-error" id="emailError"></span>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="At least 6 characters" required minlength="6">
+        <span class="form-error" id="passwordError"></span>
+      </div>
+      
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+        <span class="form-error" id="confirmPasswordError"></span>
+      </div>
+      
+      <button type="submit" class="submit-btn">Create Account</button>
+      
+      <p class="auth-footer">Already have an account? <a href="Sign-in.html">Sign in</a></p>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Film Fusion. All rights reserved.</p>
+  </footer>
+
+  <script src="../JS/config.js"></script>
+  <script src="../JS/auth.js"></script>
+  <script>
+    function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    document.addEventListener('DOMContentLoaded', () => {
+      initAuth('signup');
+      if (isLoggedIn()) window.location.href = getHomePath();
+    });
+  </script>
+</body>
 </html>
-
-
-

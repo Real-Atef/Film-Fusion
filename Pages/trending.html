@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Trending movies and TV shows today on Film Fusion."
+    />
+    <title>Trending Today - Film Fusion</title>
+    <link rel="icon" href="../Images/Logo2.png" />
+    <link rel="stylesheet" href="../CSS/common.css" />
+    <link rel="stylesheet" href="../CSS/Movies-Series.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <a href="../Home.html"
+            ><img src="../Images/Logo_colored.png" alt="Film Fusion"
+          /></a>
+        </div>
+        <button class="menu-toggle" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="movies.html">Movies</a></li>
+          <li><a href="series.html">Series</a></li>
+          <li><a href="watchlist.html">Watchlist</a></li>
+          <li><a href="About-us.html">About</a></li>
+        </ul>
+        <div class="search-box">
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search..."
+            autocomplete="off"
+          />
+          <button onclick="search()">Search</button>
+        </div>
+        <a href="Sign-in.html" class="profile-btn"
+          ><img src="../Images/PersonCircle-removebg-preview.png" alt="Account"
+        /></a>
+      </nav>
+    </header>
+
+    <main>
+      <h1 class="page-title">🔥 Trending Today</h1>
+
+      <div class="filter-bar" id="filterBar">
+        <div class="filters-row">
+          <select id="timeWindow" class="filter-select">
+            <option value="day">Today</option>
+            <option value="week">This Week</option>
+          </select>
+          <select id="mediaType" class="filter-select">
+            <option value="all">All</option>
+            <option value="movie">Movies Only</option>
+            <option value="tv">TV Shows Only</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="cards-grid" id="trendingGrid"></div>
+      <div class="pagination" id="pagination"></div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Film Fusion. All rights reserved.</p>
+    </footer>
+
+    <script src="../JS/config.js"></script>
+    <script src="../JS/trending.js"></script>
+    <script>
+      function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+      }
+      function search() {
+        const q = document.getElementById("searchInput").value.trim();
+        if (q)
+          window.location.href = `search-results.html?q=${encodeURIComponent(
+            q
+          )}`;
+      }
+      document
+        .getElementById("searchInput")
+        .addEventListener("keypress", (e) => {
+          if (e.key === "Enter") search();
+        });
+    </script>
+  </body>
+</html>

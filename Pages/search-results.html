@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Browse trending TV series on Film Fusion. Filter by genre.">
-  <title>Series - Film Fusion</title>
+  <meta name="description" content="Search results on Film Fusion.">
+  <title>Search - Film Fusion</title>
   <link rel="icon" href="../Images/Logo2.png">
   <link rel="stylesheet" href="../CSS/common.css">
   <link rel="stylesheet" href="../CSS/Movies-Series.css">
-  <link rel="stylesheet" href="../CSS/Series.css">
 </head>
-<body class="series-page">
+<body>
   <header>
     <nav>
       <div class="logo">
@@ -19,7 +18,7 @@
       <button class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></button>
       <ul class="nav-links" id="navLinks">
         <li><a href="movies.html">Movies</a></li>
-        <li><a href="series.html" class="active">Series</a></li>
+        <li><a href="series.html">Series</a></li>
         <li><a href="watchlist.html">Watchlist</a></li>
         <li><a href="About-us.html">About</a></li>
       </ul>
@@ -33,11 +32,9 @@
 
   <main>
     <div class="page-header">
-      <h1>TV Series</h1>
-      <p>Find your next binge-worthy show</p>
+      <h1 id="searchTitle">Search Results</h1>
     </div>
-    <div class="filter-bar" id="filterBar"></div>
-    <div class="cards-grid" id="seriesGrid"></div>
+    <div class="cards-grid" id="resultsGrid"></div>
     <div class="pagination" id="pagination"></div>
   </main>
 
@@ -46,7 +43,7 @@
   </footer>
 
   <script src="../JS/config.js"></script>
-  <script src="../JS/Series.js"></script>
+  <script src="../JS/search.js"></script>
   <script>
     function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
     function search() {

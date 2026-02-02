@@ -3,64 +3,106 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Film Fusion - Home</title>
-    <link rel="icon" href="/Images/Logo2.png" type="image/x-icon" />
-    <link rel="stylesheet" href="/CSS/Home.css" />
+    <meta
+      name="description"
+      content="Film Fusion - Discover movies and TV series. Your ultimate entertainment hub."
+    />
+    <title>Film Fusion - Discover Movies & Series</title>
+    <link rel="icon" href="./Images/Logo2.png" />
+    <link rel="stylesheet" href="./CSS/common.css" />
+    <link rel="stylesheet" href="./CSS/Home.css" />
   </head>
   <body>
     <header>
       <nav>
         <div class="logo">
-          <a href="home.html">
-            <img src="/Images/Logo_colored.png" alt="Film Fusion Logo" />
-          </a>
+          <a href="./Home.html"
+            ><img src="./Images/Logo_colored.png" alt="Film Fusion"
+          /></a>
         </div>
-        <ul class="nav-links">
-          <li></li>
-          <li><a href="/Pages/movies.html">Movies</a></li>
-          <li><a href="/Pages/series.html">Series</a></li>
-          <li><a href="/Pages/About-us.html">About Us</a></li>
+        <button class="menu-toggle" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="./Pages/movies.html">Movies</a></li>
+          <li><a href="./Pages/series.html">Series</a></li>
+          <li><a href="./Pages/watchlist.html">Watchlist</a></li>
+          <li><a href="./Pages/About-us.html">About</a></li>
         </ul>
-        <div class="profile-icon">
-          <a href="/Pages/Sign-up.html">
-            <img
-              src="/Images/PersonCircle-removebg-preview.png"
-              alt="Profile Icon"
-            />
-          </a>
+        <div class="search-box">
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search..."
+            autocomplete="off"
+          />
+          <button onclick="search()">Search</button>
         </div>
+        <a href="./Pages/Sign-in.html" class="profile-btn"
+          ><img src="./Images/PersonCircle-removebg-preview.png" alt="Account"
+        /></a>
       </nav>
     </header>
+
     <main>
-      <div class="slideshow-container" id="Slideshow"></div>
+      <div class="slideshow" id="slideshow"></div>
+
+      <section id="trending">
+        <h2 class="section-title">
+          <a href="./Pages/trending.html">Trending Today</a>
+        </h2>
+        <div class="cards-grid"></div>
+      </section>
+
       <section id="recommendations">
-        <h2>Recommendations</h2>
-        <div class="row">
-          <!-- Popular Movie Cards will be dynamically generated here -->
-        </div>
+        <h2 class="section-title">Recommended For You</h2>
+        <div class="cards-grid"></div>
       </section>
+
       <section id="movies">
-        <a href="/Pages/movies.html"><h2>Movies</h2></a>
-        <div class="row">
-          <!-- Movie Cards will be dynamically generated here -->
-        </div>
+        <h2 class="section-title">
+          <a href="./Pages/movies.html">Popular Movies</a>
+        </h2>
+        <div class="cards-grid"></div>
       </section>
+
       <section id="series">
-        <a href="/Pages/series.html"> <h2>Series</h2></a>
-        <div class="row">
-          <!-- Series Cards will be dynamically generated here -->
-        </div>
+        <h2 class="section-title">
+          <a href="./Pages/series.html">Trending Series</a>
+        </h2>
+        <div class="cards-grid"></div>
       </section>
+
       <section id="upcoming">
-        <h2>Up Coming</h2>
-        <div class="row">
-          <!-- Upcoming Movie Cards will be dynamically generated here -->
-        </div>
+        <h2 class="section-title">
+          <a href="./Pages/coming-soon.html">Coming Soon</a>
+        </h2>
+        <div class="cards-grid"></div>
       </section>
     </main>
+
     <footer>
-      <p>&copy; 2024 Film Fusion. All rights reserved.</p>
+      <p>&copy; 2026 Film Fusion. All rights reserved.</p>
     </footer>
-    <script src="/JS/Home.js"></script>
+
+    <script src="./JS/config.js"></script>
+    <script src="./JS/Home.js"></script>
+    <script>
+      function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+      }
+      function search() {
+        const q = document.getElementById("searchInput").value.trim();
+        if (q)
+          window.location.href = `./Pages/search-results.html?q=${encodeURIComponent(
+            q
+          )}`;
+      }
+      document
+        .getElementById("searchInput")
+        .addEventListener("keypress", (e) => {
+          if (e.key === "Enter") search();
+        });
+    </script>
   </body>
 </html>

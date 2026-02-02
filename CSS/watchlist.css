@@ -1,0 +1,160 @@
+/* ============================================
+   Film Fusion - Watchlist Page
+   ============================================ */
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-8);
+  padding: 0 var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: var(--sp-3) var(--sp-6);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--ease-fast);
+}
+
+.tab:hover {
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+.tab.active {
+  color: var(--bg-primary);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Tab Content */
+.tab-content {
+  display: none;
+  padding: 0 var(--sp-4);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto var(--sp-6);
+  padding: 0 var(--sp-2);
+}
+
+.section-header h2 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.section-header .count {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* Empty State */
+.empty-state {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-4);
+  padding: var(--sp-16);
+  text-align: center;
+}
+
+.empty-state h3 {
+  font-size: var(--text-xl);
+  color: var(--text-primary);
+}
+
+.empty-state p {
+  color: var(--text-muted);
+}
+
+/* Card Actions */
+.card-actions {
+  position: absolute;
+  top: var(--sp-2);
+  right: var(--sp-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  opacity: 0;
+  transition: opacity var(--ease-fast);
+}
+
+.card:hover .card-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--ease-fast);
+}
+
+.action-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+.action-btn.active {
+  color: var(--accent);
+}
+
+.action-btn.remove-action:hover {
+  background: var(--error);
+  color: white;
+}
+
+/* Date Badge */
+.date-badge {
+  position: absolute;
+  bottom: var(--sp-2);
+  left: var(--sp-2);
+  padding: var(--sp-1) var(--sp-2);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: var(--radius-sm);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tabs {
+    gap: var(--sp-1);
+  }
+
+  .tab {
+    padding: var(--sp-2) var(--sp-4);
+    font-size: var(--text-sm);
+  }
+
+  .card-actions {
+    opacity: 1;
+  }
+}

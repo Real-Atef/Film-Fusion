@@ -1,132 +1,82 @@
-@import url("https://fonts.googleapis.com/css2?family=Italiana:wght@400;700&display=swap");
-nav {
-  display: flex;
-  justify-content: space-between; /* Aligns items evenly */
-  align-items: center; /* Vertically centers items */
-  background-color: #06131a; /* Background color of the navbar */
-  padding: 10px; /* Add some padding to the navbar */
-}
-ul {
-  display: flex;
-  list-style-type: none;
-  padding: 0;
-  margin-left: 940px;
+/* ============================================
+   Film Fusion - Home Page
+   ============================================ */
+
+/* Hero Slideshow */
+.slideshow {
+  position: relative;
+  max-width: 1200px;
+  margin: var(--sp-6) auto var(--sp-10);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-xl);
 }
 
-li {
-  margin-right: 40px;
+.slideshow::before {
+  content: '';
+  display: block;
+  padding-top: 45%;
 }
 
-a {
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
+.slide {
+  position: absolute;
+  inset: 0;
+  display: none;
+  animation: fadeSlide 1s ease;
 }
 
-.logo {
-  margin-right: auto; /* Pushes the logo to the left */
+.slide.active {
+  display: block;
 }
 
-.profile-icon {
-  margin-left: auto; /* Pushes the profile icon to the right */
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-h2 {
-  color: #ffffff;
-  margin-left: 10%;
-  font-size: 40px;
+
+@keyframes fadeSlide {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-header {
-  position: fixed;
-  top: 0;
+
+/* Gradient overlay */
+.slideshow::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1000; /* Adjust the z-index as needed */
+  height: 50%;
+  background: linear-gradient(to top, var(--bg-primary), transparent);
+  pointer-events: none;
 }
 
-main {
-  margin-top: 100px; /* Adjust the margin to accommodate the fixed header */
+/* Section styling */
+section {
+  margin-bottom: var(--sp-8);
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Italiana", sans-serif;
-  background-color: #040d12;
-}
-* {
-  box-sizing: border-box;
-}
-
-/* Slideshow container */
-#Slideshow {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-  margin-top: 10%;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {
-    opacity: 0.4;
+/* Responsive */
+@media (max-width: 1024px) {
+  .slideshow {
+    margin: var(--sp-4) var(--sp-4) var(--sp-8);
+    border-radius: var(--radius-xl);
   }
-  to {
-    opacity: 1;
+  
+  .slideshow::before {
+    padding-top: 50%;
   }
 }
-.row {
-  display: flex;
-  justify-content: center; /* Center the movie cards horizontally */
-}
-.card {
-  display: inline-block;
-  margin-right: 25px; /* Add spacing between cards */
-  text-align: center;
-  position: relative;
-}
-.card img {
-  width: 200px;
-  opacity: 1;
-  display: block;
-  transition: opacity 0.5s ease;
-  backface-visibility: hidden;
-}
-.card:hover img {
-  opacity: 0.1;
-}
-.overlay {
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  transition: opacity 0.5s ease;
-  width: 200px;
-}
-.card:hover .overlay {
-  opacity: 1;
-}
-.text {
-  color: #04aa6d;
-  font-size: 20px;
-  width: 200px;
-  text-align: center;
-}
-footer {
-  background-color: #06131a;
-  color: white;
-  text-align: center;
-  padding: 10px;
+
+@media (max-width: 768px) {
+  .slideshow {
+    margin: var(--sp-3) var(--sp-3) var(--sp-6);
+    border-radius: var(--radius-lg);
+  }
+  
+  .slideshow::before {
+    padding-top: 56.25%;
+  }
 }
